@@ -4,19 +4,19 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <UserSecretsId>aspnet-ContactList-8B97C88B-269E-47CE-B689-AAB89ECFCBDF</UserSecretsId>
+        <UserSecretsId>aspnet-ContactList-08A4CBC9-ADFC-40CC-8BED-6265736A8214</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
-        <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true"/>
+        <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.0"/>
-        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.0"/>
-        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.0"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.0"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0" />
     </ItemGroup>
 
 </Project>
