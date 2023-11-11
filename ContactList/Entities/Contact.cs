@@ -10,4 +10,13 @@ public class Contact
     public string? MobilePhone { get; set; }
     public string? JobTitle { get; set; }
     public DateOnly BirthDate { get; set; }
+    
+    public Contact(Guid id, string? name, string? mobilePhone, string? jobTitle, DateOnly birthDate)
+    {
+        Id = id;
+        Name = name;
+        MobilePhone = mobilePhone;
+        JobTitle = jobTitle;
+        BirthDate = birthDate;
+    }
 }

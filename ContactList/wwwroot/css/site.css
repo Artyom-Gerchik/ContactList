@@ -26,6 +26,7 @@ body {
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   padding: .5rem 1rem;
+  justify-content: space-between!important;
 }
 
 .hero {
