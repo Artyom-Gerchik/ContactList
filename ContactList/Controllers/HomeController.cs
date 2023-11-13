@@ -49,7 +49,7 @@ public class HomeController : Controller
     public IActionResult Create(AddModalModel newContact)
     {
         Contact contactToAdd = new Contact(Guid.NewGuid(), newContact.Name, newContact.MobilePhone, newContact.JobTitle,
-            newContact.BirthDate);
+            DateOnly.Parse(newContact.BirthDate!));
 
         _context.Contacts.Add(contactToAdd);
         _context.SaveChanges();

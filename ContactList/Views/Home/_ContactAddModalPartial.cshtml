@@ -2,36 +2,33 @@
 
 <div class="modal fade" id="addContact">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content" style="background-color: rgba(133, 129, 139, 0.49); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); border-radius: 25px; color: white;">
+            <div class="modal-header" style="justify-content: center">
                 <h5 class="modal-title" id="addContactLabel">Add Contact</h5>
-                <button type="button" class="close" data-bs-dismiss="modal">
-                    <span>x</span>
-                </button>
             </div>
             <div class="modal-body">
                 <form action="Home/Create">
-                    <div class="form-group">
+                    <div class="form-group" style="margin-bottom: 1rem">
                         <label asp-for="Name"></label>
-                        <input asp-for="Name" class="form-control"/>
+                        <input asp-for="Name" class="form-control" placeholder="Vasya" type="text" maxlength="15"/>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="margin-bottom: 1rem">
                         <label asp-for="MobilePhone"></label>
-                        <input asp-for="MobilePhone" class="form-control"/>
+                        <input asp-for="MobilePhone" class="form-control" placeholder="+375 (44) 345-67-89"/>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="margin-bottom: 1rem">
                         <label asp-for="JobTitle"></label>
-                        <input asp-for="JobTitle" class="form-control"/>
+                        <input asp-for="JobTitle" class="form-control" placeholder="Builder" type="text" maxlength="40"/>
                     </div>
                     <div class="form-group">
                         <label asp-for="BirthDate"></label>
-                        <input asp-for="BirthDate" class="form-control"/>
+                        <input asp-for="BirthDate" class="form-control" placeholder="04/05/2003"/>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-save="modal">Save</button>
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-success" data-save="add-modal">Save</button>
 
 
             </div>
