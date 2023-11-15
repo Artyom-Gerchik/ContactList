@@ -11,39 +11,51 @@
 
 <div class="hero">
     <div class="content">
-        <button type="button" class="btn btn-outline-light" data-toggle="add-modal" data-target="#addContact"
-                data-url="@Url.Action("Create")">
-            Add Contact
-        </button>
+        <div class="contacts_area_header d-flex justify-content-between">
+            <h2 style="margin-bottom: 0">Your Contacts</h2>
+            <button type="button" class="btn btn-outline-light" data-toggle="add-modal" data-target="#addContact"
+                    data-url="@Url.Action("Create")">
+                Add Contact
+            </button>
+        </div>
+
+        <hr>
 
         @if (Model!.Contacts.Count != 0)
         {
-            <table class="table table-hover table-dark">
-                <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Phone Number</th>
-                    <th scope="col">Job Title</th>
-                    <th scope="col">Birth Date</th>
-                </tr>
-                </thead>
-                <tbody>
+            <div class="contacts_header">
+                <p>Name</p>
+                <p>Mobile Phone</p>
+                <p>Job Title</p>
+                <p>Birth Date</p>
+            </div>
+        }
+
+
+        @if (Model!.Contacts.Count != 0)
+        {
+            <div class="scroll_menu">
                 @foreach (var contact in Model.Contacts)
                 {
-                    <tr>
-                        <th scope="row">@contact.Name</th>
-                        <td>@contact.MobilePhone</td>
-                        <td>@contact.JobTitle</td>
-                        <td>@contact.BirthDate.ToString()</td>
-                    </tr>
+                    <button type="button" class="btn btn-outline-light" style="margin-bottom: 0.5rem; padding-left: 0; padding-right: 0" data-toggle="edit-modal" data-target="#editContact"
+                            data-url="@Url.Action($"Edit/{contact.Id}")">
+                        <div class="contact_button">
+                            <p>@contact.Name</p>
+                            <p>@contact.MobilePhone</p>
+                            <p>@contact.JobTitle</p>
+                            <p>@contact.BirthDate.ToString()</p>
+                        </div>
+                    </button>
                 }
-
-                </tbody>
-            </table>
+            </div>
         }
         else
         {
-            <p>NO CONTACTS</p>
+            <div class="scroll_menu" style="justify-content: center">
+
+                <p>NO CONTACTS</p>
+            </div>
         }
+
     </div>
 </div>

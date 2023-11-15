@@ -6,6 +6,8 @@
 $(function () {
     var page = $('#mainPage')
 
+    console.log(page)
+
     $('button[data-toggle="add-modal"]').click(function (event) {
         var url = $(this).data('url');
         $.get(url).done(function (data) {
@@ -43,6 +45,95 @@ $(function () {
             })
         }
     })
+
+    $('button[data-toggle="edit-modal"]').click(function (event) {
+        var url = $(this).data('url');
+        var decodedUrl = decodeURIComponent(url)
+        $.get(decodedUrl).done(function (data) {
+            page.html(data)
+            page.find('.modal').modal('show');
+        })
+    })
+
+    page.on('click', '[data-save="edit-modal"]', function (event) {
+        var form = $(this).parents('.modal').find('form');
+        var actionUrl = form.attr('action');
+        var sendData = form.serialize();
+        var dataAsArray = form.serializeArray();
+        
+        var name = dataAsArray[1].value;
+        var phoneNumber = dataAsArray[2].value;
+        var jobTitle = dataAsArray[3].value;
+        var birthDate = dataAsArray[4].value;
+
+        if (!parseBirthDate(birthDate) && !parsePhoneNumber(phoneNumber)) {
+            alert("Wrong BirthDate! Format: MM/DD/YYYY\nWrong PhoneNumber! Format: +375 (xx) 123-45-67")
+        } else if (!parsePhoneNumber(phoneNumber)) {
+            alert("Wrong PhoneNumber! Format: +375 (44) 123-45-67")
+        } else if (!parseBirthDate(birthDate)) {
+            alert("Wrong BirthDate! Format: MM/DD/YYYY")
+        } else {
+            $.post(actionUrl, sendData).done(function (data) {
+                page.find('.modal').modal('hide');
+                location.reload();
+            })
+        }
+    })
+
+    page.on('click', '[data-save="delete-model"]', function (event) {
+        var form = $(this).parents('.modal').find('form');
+        var actionUrl = "Home/Delete"
+        var sendData = form.serialize();
+        var dataAsArray = form.serializeArray();
+
+        var name = dataAsArray[1].value;
+        var phoneNumber = dataAsArray[2].value;
+        var jobTitle = dataAsArray[3].value;
+        var birthDate = dataAsArray[4].value;
+        
+        var msg = "Are you sure about delete" + " " + name + "?"
+        const response = confirm(msg);
+        if (response) {
+            $.post(actionUrl, sendData).done(function (data) {
+                page.find('.modal').modal('hide');
+                location.reload();
+            })
+        } else {
+            
+        }
+    })
+
+
+    // page.on('click', '[data-save="delete-modal"]', function (event) {
+    //    
+    //    
+    //     var form = $(this).parents('.modal').find('form');
+    //    
+    //     console.log(form.serialize())
+    // var actionUrl = form.attr('action');
+    // var sendData = form.serialize();
+    // var dataAsArray = form.serializeArray();
+    //
+    // console.log(actionUrl)
+    //
+    // var name = dataAsArray[1].value;
+    // var phoneNumber = dataAsArray[2].value;
+    // var jobTitle = dataAsArray[3].value;
+    // var birthDate = dataAsArray[4].value;
+    //
+    // if (!parseBirthDate(birthDate) && !parsePhoneNumber(phoneNumber)) {
+    //     alert("Wrong BirthDate! Format: MM/DD/YYYY\nWrong PhoneNumber! Format: +375 (xx) 123-45-67")
+    // } else if (!parsePhoneNumber(phoneNumber)) {
+    //     alert("Wrong PhoneNumber! Format: +375 (44) 123-45-67")
+    // } else if (!parseBirthDate(birthDate)) {
+    //     alert("Wrong BirthDate! Format: MM/DD/YYYY")
+    // } else {
+    //     $.post(actionUrl, sendData).done(function (data) {
+    //         page.find('.modal').modal('hide');
+    //         location.reload();
+    //     })
+    // }
+    // })
 })
 
 function parseBirthDate(inputDate) {
